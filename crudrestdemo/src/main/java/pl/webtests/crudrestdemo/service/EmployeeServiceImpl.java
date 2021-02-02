@@ -12,11 +12,11 @@ import pl.webtests.crudrestdemo.entity.Employee;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	private EmployeeDAO employeeDAO;
-	
+
 	public EmployeeServiceImpl(EmployeeDAO theEmployeeDAO) {
 		employeeDAO = theEmployeeDAO;
 	}
-	
+
 	@Override
 	@Transactional
 	public List<Employee> findAll() {
@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	public void save(Employee theEmployee) {
-		 employeeDAO.save(theEmployee);
+		employeeDAO.save(theEmployee);
 
 	}
 

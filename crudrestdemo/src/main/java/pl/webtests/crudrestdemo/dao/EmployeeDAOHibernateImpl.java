@@ -16,57 +16,53 @@ import pl.webtests.crudrestdemo.entity.Employee;
 public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
 	private EntityManager entityManager;
-	
+
 	@Autowired
 	public EmployeeDAOHibernateImpl(EntityManager theEndityManager) {
 		entityManager = theEndityManager;
 	}
-	
+
 	@Override
 	public List<Employee> findAll() {
-		
+
 		Session currentSession = entityManager.unwrap(Session.class);
-		
-		Query<Employee> theQuery = 
-				currentSession.createQuery("from Employee", Employee.class);
-		
+
+		Query<Employee> theQuery = currentSession.createQuery("from Employee", Employee.class);
+
 		List<Employee> employees = theQuery.getResultList();
-		
+
 		return employees;
 	}
 
 	@Override
 	public Employee findById(int theId) {
-		
+
 		Session currentSession = entityManager.unwrap(Session.class);
-		
-		Employee theEmployee = 
-				 currentSession.get(Employee.class, theId);
-		
+
+		Employee theEmployee = currentSession.get(Employee.class, theId);
+
 		return theEmployee;
 	}
 
 	@Override
 	public void save(Employee theEmployee) {
-		
+
 		Session currentSession = entityManager.unwrap(Session.class);
-		
+
 		currentSession.saveOrUpdate(theEmployee);
-		
+
 	}
 
 	@Override
 	public void deleteById(int theId) {
-		
+
 		Session currentSession = entityManager.unwrap(Session.class);
-		
-		Query theQuery = 
-				currentSession.createQuery("delete from Employee where id=:employeeId");
-		
+
+		Query theQuery = currentSession.createQuery("delete from Employee where id=:employeeId");
+
 		theQuery.setParameter("employeeId", theId);
 		theQuery.executeUpdate();
-		
-		
+
 	}
 
 }
