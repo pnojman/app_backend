@@ -34,7 +34,7 @@ public class TestWhenManagingEmployee extends BaseTest {
 
 	@Test
 	@Tag("local")
-	void shouldBePossibleToDeleteEmployeeByIdWhenEmployeeExists() throws InterruptedException {
+	void shouldBeAbleToDeleteEmployeeByIdWhenEmployeeExists() throws InterruptedException {
 
 		int employeeId = 1;
 
@@ -60,7 +60,7 @@ public class TestWhenManagingEmployee extends BaseTest {
 
 	@Test
 	@Tag("local")
-	void shouldBePossibleToGetEmployeeByIdWhenEmployeeExists() throws InterruptedException, ParseException {
+	void shouldBeAbleToGetEmployeeByIdWhenEmployeeExists() throws InterruptedException, ParseException {
 
 		int employeeId = 2;
 
@@ -75,7 +75,7 @@ public class TestWhenManagingEmployee extends BaseTest {
 
 	@Test
 	@Tag("local")
-	void shouldBePossibleToModifyEmployeeWhenFirstNameLastNameEmailAreChanged()
+	void shouldBeAbleToModifyEmployeeWhenFirstNameLastNameEmailAreChanged()
 			throws InterruptedException, ParseException {
 
 		Employee requestBody = employeeUtils.setEmployeeByJson("jsons/manageEmployee/modifyEmployee.json");
@@ -88,7 +88,7 @@ public class TestWhenManagingEmployee extends BaseTest {
 
 	@Test
 	@Tag("local")
-	void shouldBePossibleToGetAllEmployeesWhenWeHaveAtLeastSeven() throws InterruptedException {
+	void shouldBeAbleToGetAllEmployeesWhenWeHaveAtLeastSeven() throws InterruptedException {
 
 		List<Employee> employees = given().spec(requestSpecification).when().get("api/employees").then().extract()
 				.body().jsonPath().getList(".", Employee.class);
