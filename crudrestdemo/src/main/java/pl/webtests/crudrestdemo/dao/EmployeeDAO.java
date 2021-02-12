@@ -14,4 +14,6 @@ public interface EmployeeDAO {
 
 	public void deleteById(int theId);
 
+	public Employee findByFirstAndLastNameAndEmail(Employee theEmployee);
+
 }

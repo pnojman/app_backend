@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import pl.webtests.crudrestdemo.entity.Employee;
 
@@ -62,6 +61,20 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
 		theQuery.setParameter("employeeId", theId);
 		theQuery.executeUpdate();
+
+	}
+
+	@Override
+	public Employee findByFirstAndLastNameAndEmail(Employee theEmployee) {
+		Session currentSession = entityManager.unwrap(Session.class);
+
+		Query<Employee> theQuery = currentSession
+				.createQuery(
+						"from Employee where first_name = '" + theEmployee.getFirstName() + "' and last_name = '"
+								+ theEmployee.getLastName() + "' and email = '" + theEmployee.getEmail() + "'",
+						Employee.class);
+
+		return theQuery.getSingleResult();
 
 	}
 

@@ -1,0 +1,1 @@
+delete from `employee` where  first_name = 'AUTTom' and last_name = 'AUTMane' and email = 'AUTdom@op.pl';

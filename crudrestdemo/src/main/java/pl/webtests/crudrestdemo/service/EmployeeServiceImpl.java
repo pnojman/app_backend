@@ -33,7 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public void save(Employee theEmployee) {
 		employeeDAO.save(theEmployee);
-
 	}
 
 	@Override
@@ -41,6 +40,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void deleteById(int theId) {
 		employeeDAO.deleteById(theId);
 
+	}
+
+	@Override
+	@Transactional
+	public Employee findByFirstAndLastNameAndEmail(Employee theEmployee) {
+		return employeeDAO.findByFirstAndLastNameAndEmail(theEmployee);
 	}
 
 }

@@ -14,4 +14,5 @@ public interface EmployeeService {
 
 	public void deleteById(int theId);
 
+	public Employee findByFirstAndLastNameAndEmail(Employee theEmployee);
 }
